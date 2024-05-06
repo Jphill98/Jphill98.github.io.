@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title> 
+    <!-- link to css -->
+    <link href="format.css" rel="stylesheet type="text/css />
+    <link href="layout.css" rel="stylesheet type="text/css />
+</head>
+<body>
+    
+  <header>
+    <!-- inline image --> <!-- contextual/attribute selectors -->
+    <img src="https://cdn.pixabay.com/photo/2016/05/27/05/39/computer-1419134_960_720.png" alt=".logo" style="border-radius: -100%" width="100" 
+    element class="logo"></element />
+    <nav>
+<ul>
+<!-- nav links -->
+<li><a href="lowend.html">Low End Build</a></li>
+<li> <a href="highend.html">High End Build</a> </li> 
+<li><a href="computers.html">Main Page</a></li>
+    
+
+</ul>
+
+    </nav>
+
+</header>
+<!-- text elements -->
+<section> <h2>Computeres are very important for todays society</h2> 
+    <br /><br />
+    <!-- character reference -->
+ <h2> Here at (redacted)&reg; we produce these machines</h2>
+ <br /><br />
+ <h2>We produce many different products that range in price</h2>
+</section>
+<section>
+ <h2>We sell a <a href="highend.html" >High End Build</a> and a <a href="lowend.html" >Beginer's Build</a></h2>
+ <br /><br />
+ <h2>The high end build costs 3000$</h2>
+ <br /><br />
+ <h2>The low end build costs 1300$</h2>
+</section>
+<section>
+    <!-- enter a number and conversion to text -->
+     <h2 class="input-text">Enter Number </h2> <br>
+     <input id="input-box" placeholder="number" oninput="getValue()"> <br>
+    <br /><br />
+    <h2>The Number In Text Is</h2>
+    <br /><br />
+    <p id="p1"></p>
+      <br /><br />
+      <!-- java function for alert and delay a function -->
+    <h2>Click the button to display an alert box</h2>
+
+    <button onclick="alertHi()">Alert</button>
+    <script>
+        function alertHi() {
+            setTimeout("alert('You Have Sent A Delayed Alert')", 1000);
+        }
+        </script>
+          <br /><br />
+        <!-- java function for math function -->
+        <h2>Pi is equal to:</h2>
+        <br /><br />
+        <p id="pi"></p>
+        <script>
+            document.getElementById("pi").innerHTML = Math.PI;
+            </script>
+             <br /><br />
+              <!-- countdown function -->
+                 <h2>Countdown until New Years</h2>
+                 <br /><br />
+            <p id="countdown"></p>
+            <script>
+                var countDownDate = new Date("Jan 1, 2025 0:0:0").getTime();
+                var x = setInterval(function() {
+                  var now = new Date().getTime();
+                  var distance = countDownDate - now;
+                  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                  + minutes + "m " + seconds + "s ";
+                }, 1000);
+                </script>
+                <br /><br />
+                <h2 class="convert-text">The Current Time Is </h2>
+                     <!-- java function for day and time -->
+                     <br /><br />
+                <p id="p2"></p>
+                <script>
+                    var date = new Date();
+                    document.getElementById("p2").innerHTML = date;
+                </script>
+                <!-- java function for conversion of number to text (displays at the top) -->
+                <script>
+var digit = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+var denominations = ["", "Thousand", "Million", "Billion", "Trillion"];
+var tens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+var ties = ["Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+let inputBox = document.getElementById('input-box');
+let outputBox = document.getElementsByTagName('p')[0];
+var input;
+function getValue() {
+    input = inputBox.value;
+    if (!/^\d+$/.test(input) && input.length > 0) {
+        outputBox.innerHTML = "Invalid input. Please enter only digits.";
+        outputBox.style.color = 'red';
+        return;
+    } else if (input.length > 15) {
+        outputBox.innerHTML = "Too Large Number.";
+        outputBox.style.color = 'red';
+        return;
+    }
+    outputBox.style.color = 'black';
+    outputBox.innerHTML = "";
+    while (input.length % 3 !== 0) {
+        input = "0" + input;
+    }
+    input = reverseString(input);
+    if (input === "000")
+        outputBox.innerHTML = "Zero";
+    else
+        outputBox.innerHTML = convert(0, 0);
+}
+function add(s1, s2) {
+    if (s1.length && s2.length)
+        return s1 + " " + s2;
+    return s1 + s2;
+}
+function convert(idx, level) {
+    if (idx >= input.length)
+        return "";
+
+    let cur = "";
+
+    let od = parseInt(input[idx]);
+    let td = parseInt(input[idx + 1]); 
+    let hd = parseInt(input[idx + 2]);
+    if (hd)
+        cur = add(cur, add(digit[hd], "Hundred"));
+    if (td) {
+        if (td == 1)
+            cur = add(cur, tens[od]);
+        else {
+            cur = add(cur, ties[td - 1]);
+            if (od) cur = add(cur, digit[od]);
+        }
+    } else if (od)
+        cur = add(cur, digit[od]);
+    if (cur != "")
+        cur = add(cur, denominations[level]);
+    return add(convert(idx + 3, level + 1), cur);
+}
+function reverseString(str) {
+    return (str === '') ? '' : reverseString(str.substr(1)) + str.charAt(0);
+}
+                </script>
+</section>
+    <div class="footer-container">
+    <div class="footer">
+        <div class="footer-heading footer-1">
+            <h2>About Us</h2>
+            <a href="https://youtu.be/YG8Q7lzZ-PI" >information</a>
+            <a href="https://youtu.be/_CQ_ehoRfsE" >products</a>
+            <a href="https://mobile.twitter.com/en/tos" >terms of service</a>
+             </div>
+             <div class="footer-heading footer-2">
+                <h2>Contact Us</h2>
+                <a href="https://www.amazon.com/Josh-Cellars-Cabernet-Sauvignon-750/dp/B005CJT6HM/ref=sr_1_2_f3_0o_fs?crid=3S4CI5G75T66F&dib=eyJ2IjoiMSJ9.8qQMs5HV1HXnykspdLEboakre9ytdq8cnloHq-nO7wi6zcBmXnB59oJMRK8dZahBVTxILJMcg3DNNf4n5ApcbuWWiTFE8gAvmcHQl12GeS_3lJG8Pk4gFurGQVLmjjBaPKg5RcIwrvBC_WujNMK9vllxl96gELdIYeA0TOPyepaS2nYXIsKsofYykn4J4KMNKi5yOo5hT4_1ro6JGM1LWKwOK99cyVGENufHpu891fw.oJssj5_rJbgb0xQfEKtYbI2XYjOfcDZnDtDQKoWJ9r0&dib_tag=se&keywords=josh&qid=1711319548&sprefix=josh%2Caps%2C83&sr=8-2" >jobs</a>
+                <a href="https://www.youtube.com/watch?v=0iCtC-EOzEo" >support</a>
+                <a href="https://www.dell.com/en-us/shop/desktop-computers/sf/alienware-desktops" >contact</a>
+                 </div>
+                 <div class="footer-heading footer-3">
+                    <h2>Socials</h2>
+                    
+                  <a href="https://twitter.com/Ninja">Twitter</a> 
+                    <a href="https://www.amazon.com/Josh-Cellars-Cabernet-Sauvignon-750/dp/B005CJT6HM/ref=sr_1_2_f3_0o_fs?crid=3S4CI5G75T66F&dib=eyJ2IjoiMSJ9.8qQMs5HV1HXnykspdLEboakre9ytdq8cnloHq-nO7wi6zcBmXnB59oJMRK8dZahBVTxILJMcg3DNNf4n5ApcbuWWiTFE8gAvmcHQl12GeS_3lJG8Pk4gFurGQVLmjjBaPKg5RcIwrvBC_WujNMK9vllxl96gELdIYeA0TOPyepaS2nYXIsKsofYykn4J4KMNKi5yOo5hT4_1ro6JGM1LWKwOK99cyVGENufHpu891fw.oJssj5_rJbgb0xQfEKtYbI2XYjOfcDZnDtDQKoWJ9r0&dib_tag=se&keywords=josh&qid=1711319548&sprefix=josh%2Caps%2C83&sr=8-2">Instagram</a> 
+                     <a href="https://discord.gg/roblox">discord</a> 
+                     </div>
+                     <!-- form with field sets and email input -->
+                     <div class="footer-email-form">
+                         <h2>Join Our News Letter</h2>
+                         <!-- pattern and field lengths and required -->
+                       <form> 
+                    <input type="email" required placeholder="enter your email address" id="footer-email" minlength="8"  pattern=".{a,z}">
+                      <!-- reset and submit -->
+                      <input type="submit" calue="sign up" id="footer-email-btn"> 
+                      <input type="reset" calue="sign up" id="footer-email-resbtn"> 
+                      <br /><br />
+                      <!-- selection list -->
+                      <h2>Email Content</h2>
+                      <select name="email-subject" id="email-subject">
+                          <option value="company-news">Company News</option>
+                          <option value="new-products">New Products</option>
+                          <option value="job-offerings">Job Offerings</option>
+                          <option value="flash-sales">Flash Sales</option>
+                        </select>
+                      <h2>Time to Recieve Emails</h2> 
+                        <input type="time" id="footer-email-time"> 
+                      <br /><br />
+                      <h2>Recieve Job Postings</h2> 
+                      <input type="radio" id="footer-email-radio"> 
+                      <br /><br />
+                      <h2>Email Frequency</h2>       
+                      <input type="range" id="footer-email-range"> 
+                      <br /><br />
+                          <h2>Stay Signed In</h2> 
+                        <input type="checkbox" id="footer-email-checkbox">
+                    </form>
+    </div>
+    <!-- text area -->
+    <div class="textarea-footer">
+        <h2>Review or Comment</h2>
+        <form>
+        <textarea rows="20" cols="50" input type="text">enter your comment or review</textarea>
+        <br /><br />
+        <!-- datalist -->
+        <label for="review-comment1">Review or Comment:</label>
+        <br /><br />
+        <input list="review-comment1" id="review-comment" name="review-comment" />
+        <datalist id="review-comment1">
+            <option value="Review"></option>
+            <option value="Comment"></option>
+          </datalist>
+        <input type="submit" calue="review-comment" id="footer-email-btn">
+        <input type="reset" calue="sign up" id="footer-email-resbtn"> 
+        </div>
+        <div class="time">
+        <form>
+</body>
+</html>
