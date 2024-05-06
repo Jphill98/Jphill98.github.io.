@@ -1,0 +1,171 @@
+/* float elements and floated layout */
+header {
+    margin: 2px 45px;
+    padding: 1%;
+    float: top; 
+}
+section {
+margin: 40px 45px;
+    padding: 75px 0px 75px 40px;
+}
+footer {
+    margin: 40px 45px;
+     padding: 20px 40px 75px 40px;
+     float: bottom, ;
+}
+.logo {
+    float: left, top;
+}
+/* overflow */
+nav {float: right; }
+header::after {
+    content: '';
+    clear: both;
+    overflow:hidden
+}
+nav ul {
+    list-style: none;
+}
+/* block elements */ /* relative position */
+nav li{
+    display: inline-block;
+    margin-left: 70px; 
+    padding-top: 48px;
+position: relative;}
+/* absolute position */
+a::before {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 50px;
+position: absolute;
+top: 0;
+width: 0%;
+transition: all ease-in-out 100ms; 
+}
+nav a:hover::before {
+    width: 100%;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.footer-container {
+    padding-bottom: 4rem 0 4rem 0;
+}
+/* overflow */
+.footer {
+    width:80%;
+    height: 59vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: 0 auto;
+    overflow:hidden
+}
+.footer-heading {
+    display: flex;
+    flex-direction: column;
+    margin-right: 4rem;
+}
+.footer-heading h2 {
+    margin-bottom: 3rem;
+}
+.footer-eamil-form h2 {
+    margin-bottom: 3rem;
+}
+#footer-email {
+    margin-top: 20px;
+    width: 250px;
+    height: 40px; 
+    outline: none;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+#footer-email-btn {
+    width: 100px;
+    height: 40px;
+ border-radius: 100px ;
+
+
+}
+#footer-email-time {
+    height: 40px;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+#footer-email-checkbox {
+    width: 70px;
+    height: 30px;
+ border-radius: 100px ;
+ padding-left: 1rem;
+ margin-bottom: 2rem;
+}
+#footer-email-radio {
+    width: 70px;
+    height: 30px;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+#footer-email-range {
+    width: 200px;
+    height: 40px;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+#email-subject {
+    width: 150px;
+    height: 50px;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+
+}
+@media screen and (max-width: 1150px) {
+    .footer {
+        height: 50vh;
+    }
+    .footer-email-form{
+        margin-top: 4rem;
+    }
+}
+@media screen and (max-width: 820px) {
+    .footer {
+        padding-top: 2rem;
+    }
+    @media screen and (max-width: 720px) {
+        .footer-3 {
+           display: none;
+        }
+}
+/* grid layout used on lowend.html and highend.html */ /* overflow */
+}
+.parts{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  overflow:hidden
+}
+.textarea-footer h2{
+    padding-left: 4rem;
+    margin-bottom: 1rem;
+}
+.textarea-footer {
+    padding-left: 4rem;
+    margin-bottom: 1rem;
+}
+#review-comment {
+    width: 200px;
+      }
+#footer-email-resbtn{
+    width: 100px;
+    height: 40px;
+ border-radius: 100px ;
+}
+button {
+    width: 80px;
+    height: 50px;
+}
+.input-box{
+    width: 200px;
+}

@@ -1,0 +1,107 @@
+body {
+    background-color: rgb(56, 56, 56);
+ color: antiquewhite;
+ font-family: Arial, Helvetica, sans-serif;
+ }
+ header {
+     background-color: rgb(20, 20, 20);
+    }  
+ section {
+     background-color: rgb(32, 32, 32);
+ color: rgb(252, 224, 189);
+     font-size: x-large;    
+ }
+ footer {
+    background-color: black;
+     color: cornsilk;  
+ }
+nav a{
+    color: cornsilk;
+}
+ a:hover {
+     color: rgba(85, 25, 25, 0.76);
+}
+ a::before {
+    background-color:rgb(255, 255, 255);
+}
+.footer-container {
+    background-color: rgb(56, 56, 56);
+}
+.footer {
+    background-color: rgb(56, 56, 56);
+    color: cornsilk;
+}
+.footer-heading a {
+    color: cornsilk;
+   text-decoration: none;
+   margin-bottom: 0.5rem;
+}
+/* psuedo element for hypertext link */
+.footer-heading a:hover{
+    color: rgba(0, 0, 0, 0.377);
+    transition: .1s ease-in-out ;
+}
+.footer-email-form h2 {
+    color: cornsilk;
+}
+#footer-email {
+    color: rgb(0, 0, 0);
+}
+#footer-email-btn {
+ background-color: rgb(44, 44, 44);
+ color: cornsilk;
+}
+/* psuedo element */
+#footer-email-btn:hover {
+    cursor: pointer;
+    background-color: rgba(8, 255, 49, 0.349);
+    transition: all 0.4s ease-out;
+}
+#footer-email-time {
+    background-color: rgb(44, 44, 44);
+    color: gray;
+}
+ 
+/* format lists and text */
+div, div li{
+    color: cornsilk;
+}
+h2 { 
+    color: cornsilk;
+}
+/* format text area */
+#email-subject{
+    background-color: rgb(44, 44, 44);
+    color: gray;
+}
+textarea {
+    background-color: rgb(44, 44, 44);
+    color: gray;  
+    /* focus pseudo class to validate or invalidate forum */
+}
+input:required:valid {
+    background-color: green;
+}
+input:invalid {
+    background-color: rgb(255, 181, 181);
+}
+input:focus:invalid {
+    background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% lightsalmon;
+    background-size: 25px;
+  }
+  input:required:focus:valid {
+    background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg") no-repeat 95% 50% lightgreen;
+    background-size: 25px;
+  }
+  #footer-email-resbtn{
+    background-color: rgb(44, 44, 44);
+    color: cornsilk;
+  }
+  #footer-email-resbtn:hover {
+    cursor: pointer;
+    background-color: rgba(228, 4, 4, 0.349);
+    transition: all 0.4s ease-out;
+  }
+.p1 {
+    color: cornsilk;
+}
